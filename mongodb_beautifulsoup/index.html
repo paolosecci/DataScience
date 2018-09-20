@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MARS Mission</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Mars Data</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">get Live NASA Data</a></p>
+
+        </div>
+
+            {% for m_d in mars_data%}
+                    <div class="col-lg-4">
+                            <div class="card" style="width: 20rem;">
+                                <div class="card-body">
+                                  <h4 class="card-title">Mars</h4>
+                                  <h6 class="card-subtitle mb-2 text-muted">{{ m_d.time }} - {{ m_d.name }}: {{ m_d.min_temp }} | {{m_d.max_temp}}</h6>
+                                  <p class="card-text">Surf: {{ m_d.surf_location }} | {{ m_d.height }}</p>
+                                </div>
+                            </div>
+                    </div>
+            {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
