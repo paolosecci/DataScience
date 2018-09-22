@@ -18,20 +18,133 @@
 
         </div>
 
-            {% for m_d in mars_data%}
-                    <div class="col-lg-4">
-                            <div class="card" style="width: 20rem;">
-                                <div class="card-body">
-                                  <h4 class="card-title">Mars</h4>
-                                  <h6 class="card-subtitle mb-2 text-muted">{{ m_d.time }} - {{ m_d.name }}: {{ m_d.min_temp }} | {{m_d.max_temp}}</h6>
-                                  <p class="card-text">Surf: {{ m_d.surf_location }} | {{ m_d.height }}</p>
-                                </div>
-                            </div>
-                    </div>
-            {% endfor %}
+        <!-- nasa_mars_feed -->
+        <div class="container" style="width:100%">
+          {% for post in mars_data.nasa_mars_feed %}
+          <div class="row">
+            <div class="col-md-12">
+                <h2><strong>Latest Mars News</strong></h2>
+                <h3><strong>{{ post.title }}</strong></h3>
+                <p>{{ post.paragraph }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- mars_facts & featured_img -->
+        <div class="container3">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="panel">
+                <div class="panel-body">
+                    <h2><strong>Featured Mars Image</strong></h2>
+                    <img src=  {{ mars_data.featured_img }} alt="" class="featured" >
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4><strong>Current Weather on Mars</strong></h4>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <td><small>{{ mars_info.weather }}</small></td>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><strong>Mars Fact</strong></h3>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="col-md-3"><small><strong>Description</strong></small></th>
+                      <th class="col-md-3"><small><strong>Facts</strong></small></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[0].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[0].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[1].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[1].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[2].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[2].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[3].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[3].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[4].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[4].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[5].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[5].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[6].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[6].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[7].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[7].fact}}</small></td>
+                    </tr>
+                    <tr>
+                      <td><small>{{ mars_data.mars_facts_dict[8].description}}</small></td>
+                      <td><small>{{ mars_data.mars_facts_dict[8].fact}}</small></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+        <!-- Mars Hemispheres -->
+        <h2 class="hemispheres" align = "center" style="padding-left: 15px"><strong>Mars Hemispheres</strong></h2>
+        <div class="row" style="padding-bottom:20px">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-5 border">
+            <div class="image-container">
+              <img src={{ mars_data.hemisphere_data[0].img_url } alt="" style="width:100%">
+              <p class="caption" style="padding-top: 5px"><strong>{{ mars_data.hemisphere_data[0].hemisphere }}</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-5 border" >
+            <div class="image-container">
+              <img src={{ mars_data.hemisphere_data[1].img_url }} alt="" style="width:100%">
+              <p class="caption" style="padding-top: 5px"><strong>{{ mars_data.hemisphere_data[1].hemisphere }}</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-5 border" >
+            <div class="image-container">
+              <img src={{ mars_data.hemisphere_data[2].img_url }} alt="" style="width:100%">
+              <p class="caption" style="padding-top: 5px"><strong>{{ mars_data.hemisphere_data[2].hemisphere }}</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-5 border" >
+            <div class="image-container">
+              <img src={{ mars_data.hemisphere_data[3].img_url }} alt="" style="width:100%">
+              <p class="caption" style="padding-top: 5px"><strong>{{ mars_data.hemisphere_data[3].hemisphere }}</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
 
     </div>
-
 </body>
-
 </html>

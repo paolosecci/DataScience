@@ -68,12 +68,21 @@ def scrape():
         #SPACE-FACTS MARS FACTS
         import pandas as pd
         url = 'http://space-facts.com/mars/'
+        descriptions = []
+        facts = []
 
         tables = pd.read_html(url)
         table = tables[0]
-        html_table = table.to_html
+        for row in table:
+            descriptions.append(row[0])
+            facts.append(row[1])
 
-        mars_data['mars_facts'] = html_table
+        mars_facts_dict = {
+            'description' = descriptions,
+            'fact' = facts
+        }
+
+        mars_data['mars_facts_dict'] = mars_facts_dict
 
 
 
@@ -119,6 +128,6 @@ def scrape():
         return mars_data
 
 #mars_data.hemisphere_data =>  list of dicitonaries{ .hemisphere, .img_url}
-#mars_data.mars_facts      =>  html table (method)
-#mars.featured_img         =>  string w url
-#mars.nasa_mars_feed       =>  list of dictionaries{ .title, .paragraph}
+#mars_data.mars_facts      =>  dictionary of lists{.descriptions[], .facts[]}
+#mars_data.featured_img    =>  string w url
+#mars_data.nasa_mars_feed  =>  list of dictionaries{ .title, .paragraph}
